@@ -17,7 +17,7 @@ public final class RomeCalculator implements Calculator, Converter {
             "X", 10);
 
     private final String[] arrayRomeNumbers = {"N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX",
-            "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVI", "XVII", "XVIII", "XIX", "XX"};
+            "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"};
 
     @Override
     public String calculation(final String number1,
