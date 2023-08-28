@@ -3,7 +3,8 @@ package org.calculator;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IndexOutOfBoundsException, IOException {
+    public static void main(final String[] args)
+            throws IndexOutOfBoundsException, IOException {
         if (args.length != 3) {
             throw new IndexOutOfBoundsException("Invalid input. Example input: \"I + II\"");
         }

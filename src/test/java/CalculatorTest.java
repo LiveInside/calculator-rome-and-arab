@@ -1,11 +1,8 @@
-import org.calculator.Main;
 import org.calculator.RomeCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.Map;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
