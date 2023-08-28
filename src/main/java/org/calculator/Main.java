@@ -13,6 +13,6 @@ public class Main {
         String operator = args[1];
 
         RomeCalculator romeCalculator = new RomeCalculator();
-        System.out.println(romeCalculator.calculation(number1, number2, operator));
+        System.out.println(romeCalculator.calculation(number1, operator, number2));
     }
 }

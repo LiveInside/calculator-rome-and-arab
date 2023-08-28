@@ -41,5 +41,7 @@ public class CalculatorTest {
                 .isEqualTo("X");
         assertThat(romeCalculator.calculation("X", "-", "III"))
                 .isEqualTo("VII");
+        assertThat(romeCalculator.calculation("V", "-", "V"))
+                .isEqualTo("Nulla");
     }
 }
