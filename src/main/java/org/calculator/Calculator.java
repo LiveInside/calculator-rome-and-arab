@@ -1,15 +1,14 @@
 package org.calculator;
 
-import java.io.IOException;
+import org.calculator.myexception.IncorrectInput;
+import org.calculator.myexception.UnsupportedOperator;
 
 public interface Calculator {
-    String calculation(String number1, String operator, String number2) throws IOException;
+    // Сделать ArabicCalculator, RomeCalculator, убрать default, удалить calculation
+    String calculation(String number1, String operator, String number2)
+            throws IncorrectInput, UnsupportedOperator;
 
-   default int addition(int arabNumber1, int arabNumber2) {
-       return arabNumber1 + arabNumber2;
-   }
+    <T> String addition(T arabNumber1, T arabNumber2);
 
-    default int subtraction(int arabNumber1, int arabNumber2) {
-       return arabNumber1 - arabNumber2;
-    }
+    <T> String subtraction(T arabNumber1, T arabNumber2);
 }

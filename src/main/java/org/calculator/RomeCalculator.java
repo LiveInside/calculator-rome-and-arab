@@ -1,10 +1,16 @@
 package org.calculator;
 
-import java.io.IOException;
+import org.calculator.converter.ToArab;
+import org.calculator.converter.ToRome;
+import org.calculator.myexception.IncorrectInput;
+import org.calculator.myexception.UnsupportedOperator;
+
 import java.util.Map;
 
-public final class RomeCalculator implements Calculator, Converter {
-    private final Map<String, Integer> numbersMap = Map.of(
+// Наследоваться только от Calculator
+public final class RomeCalculator implements Calculator {
+    // Константы капсом и через нижнее подчёркивание
+    private final Map<String, Integer> NUMBERS_MAP = Map.of(
             "I", 1,
             "II", 2,
             "III", 3,
@@ -16,47 +22,42 @@ public final class RomeCalculator implements Calculator, Converter {
             "IX", 9,
             "X", 10);
 
-    private final String[] arrayRomeNumbers = {"N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX",
-            "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"};
+    private final ToArab ARAB_CONVERTER = new ToArab();
+    private final ToRome ROME_CONVERTER = new ToRome();
 
     @Override
-    public String calculation(final String number1,
-                              final String operator,
-                              final String number2) throws UnsupportedOperationException, IOException {
+    public String calculation(final String NUMBER_1,
+                              final String OPERATOR,
+                              final String NUMBER_2) throws UnsupportedOperator, IncorrectInput {
         String result;
 
-        if ((!numbersMap.containsKey(number1)) || !numbersMap.containsKey(number2)) {
-            throw new IOException("Incorrect input of numbers");
+        if ((!NUMBERS_MAP.containsKey(NUMBER_1)) || !NUMBERS_MAP.containsKey(NUMBER_2)) {
+            throw new IncorrectInput("\"" + NUMBER_1 + "\"" + " or " + "\"" + NUMBER_2 + "\"" +
+                    " Incorrect." +
+                    "Correct numbers only: roman I-X");
         }
 
-        switch (operator) {
-            case "+" -> {
-                int[] arabNumbers = toArab(number1, number2);
-                int arabResult = addition(arabNumbers[0], arabNumbers[1]);
-                result = toRome(arabResult);
-            }
-            case "-" -> {
-                int[] arabNumbers = toArab(number1, number2);
-                int arabResult = subtraction(arabNumbers[0], arabNumbers[1]);
-                result = toRome(arabResult);
-            }
-            default -> throw new UnsupportedOperationException("Unsupported operator");
+        switch (OPERATOR) {
+            case "+" -> result = addition(NUMBER_1, NUMBER_2);
+            case "-" -> result = subtraction(NUMBER_1, NUMBER_2);
+            default -> throw new UnsupportedOperator("\"" + OPERATOR + "\"" +
+                    " Unsupported operator. " +
+                    "Supported operators only: \"+\" and \"-\"");
         }
         return result;
     }
+
     @Override
-    public int[] toArab(final String number1, final String number2) {
-        int[] arabNumbers = new int[2];
-
-        arabNumbers[0] = numbersMap.get(number1);
-        arabNumbers[1] = numbersMap.get(number2);
-
-        return arabNumbers;
+    public String addition(Object NUMBER_1, Object NUMBER_2) {
+        Integer arabNumber1 = ARAB_CONVERTER.convert(NUMBER_1);
+        Integer arabNumber2 = ARAB_CONVERTER.convert(NUMBER_2);
+        return ROME_CONVERTER.convert(arabNumber1 + arabNumber2);
     }
 
     @Override
-    public String toRome(final int arabResult) {
-        return arrayRomeNumbers[arabResult];
+    public String subtraction(Object NUMBER_1, Object NUMBER_2) {
+        Integer arabNumber1 = ARAB_CONVERTER.convert(NUMBER_1);
+        Integer arabNumber2 = ARAB_CONVERTER.convert(NUMBER_2);
+        return ROME_CONVERTER.convert(arabNumber1 - arabNumber2);
     }
-
 }
