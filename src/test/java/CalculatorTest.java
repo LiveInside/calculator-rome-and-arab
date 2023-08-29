@@ -10,9 +10,9 @@ import java.io.IOException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
-    Calculator<String> romeCalculator = new RomeCalculator<>();
-    Converter<String, Integer> arabConverter = new RomeToArab<>();
-    Converter<Integer, String> romeConverter = new ArabToRome<>();
+    Calculator<String> romeCalculator = new RomeCalculator();
+    Converter<String, Integer> arabConverter = new RomeToArab();
+    Converter<Integer, String> romeConverter = new ArabToRome();
     @Test
     public void testRomeToArab() {
         int[] arabNumbers = {5, 3};
@@ -29,7 +29,7 @@ public class CalculatorTest {
                 .isEqualTo("VII");
     }
     @Test
-    public void testRomeCalculator() throws IOException {
+    public void testRomeCalculator() throws Exception {
         assertThat(romeCalculator.addition("I", "I"))
                 .isEqualTo("II");
         assertThat(romeCalculator.addition("I", "II"))

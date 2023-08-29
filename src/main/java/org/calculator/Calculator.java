@@ -1,6 +1,6 @@
 package org.calculator;
 
-import org.calculator.myexception.IncorrectInput;
+import org.calculator.exception.IncorrectInput;
 
 public interface Calculator<T> {
     // Сделать ArabicCalculator, RomeCalculator, убрать default, удалить calculation
