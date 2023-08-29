@@ -27,6 +27,8 @@ public class Main {
                     if (exit.equalsIgnoreCase("exit")) {
                         System.out.println("Goodbye!");
                         break;
+                    } else if (operationLine.length != 3) {
+                        throw new IncorrectInput("Example Input: \"I + II\"");
                     }
 
                     String number1 = operationLine[0];
@@ -42,7 +44,7 @@ public class Main {
                         default -> throw new UnsupportedOperator("\"" + operator + "\""
                                 + " Unsupported operator. " + "Supported operators only: \"+\" and \"-\"");
                     }
-                    System.out.println(result);
+                    System.out.println("Answer: " + result);
                 }
             } default -> throw new IncorrectLaunch("\"" + args[0] + "\"" + " IncorrectLaunch. "
                     + "Example launch: \"rome\" or \"arabic\"");
