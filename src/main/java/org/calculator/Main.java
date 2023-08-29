@@ -25,7 +25,9 @@ public class Main {
                 while (true) {
                     Scanner userInput = new Scanner(System.in);
                     System.out.println("Input operation. Example: \"I + II\"");
-                    String[] operationLine = userInput.nextLine().split(" ");
+                    String[] operationLine = userInput.nextLine()
+                            .toUpperCase()
+                            .split(" ");
                     exit = operationLine[0];
 
                     if (exit.equalsIgnoreCase("exit")) {
@@ -33,11 +35,21 @@ public class Main {
                         break;
                     }
 
-                    String numbers1 = operationLine[0];
+                    String number1 = operationLine[0];
                     String operator = operationLine[1];
-                    String numbers2 = operationLine[2];
+                    String number2 = operationLine[2];
                     RomeCalculator romeCalculator = new RomeCalculator();
-                    System.out.println(romeCalculator.calculation(numbers1, operator, numbers2));
+
+                    String result;
+
+                    switch (operator) {
+                        case "+" -> result = romeCalculator.addition(number1, number2);
+                        case "-" -> result = romeCalculator.subtraction(number1, number2);
+                        default -> throw new UnsupportedOperator("\"" + operator + "\"" +
+                                " Unsupported operator. " +
+                                "Supported operators only: \"+\" and \"-\"");
+                    }
+                    System.out.println(result);
                 }
             }
         }

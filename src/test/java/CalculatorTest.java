@@ -27,12 +27,12 @@ public class CalculatorTest {
                 .isEqualTo("VII");
     }
     @Test
-    public void testCalculation() throws IOException {
-        assertThat(romeCalculator.calculation("V", "+", "V"))
+    public void testRomeCalculator() throws IOException {
+        assertThat(romeCalculator.addition("V", "V"))
                 .isEqualTo("X");
-        assertThat(romeCalculator.calculation("X", "-", "III"))
+        assertThat(romeCalculator.subtraction("X", "III"))
                 .isEqualTo("VII");
-        assertThat(romeCalculator.calculation("V", "-", "V"))
+        assertThat(romeCalculator.subtraction("V", "V"))
                 .isEqualTo("N");
     }
 }
