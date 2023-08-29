@@ -3,7 +3,7 @@ package org.calculator.myexception;
 import java.io.IOException;
 
 public class UnsupportedOperator extends IOException {
-   public UnsupportedOperator(String message) {
+   public UnsupportedOperator(final String message) {
         super(message);
     }
 }

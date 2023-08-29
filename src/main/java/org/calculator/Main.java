@@ -11,12 +11,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(final String[] args)
             throws IncorrectLaunch, IncorrectInput, UnsupportedOperator {
-        System.out.println(args[0]);
-        if (!args[0].equalsIgnoreCase("rome")
-                && !args[0].equalsIgnoreCase("arabic")) {
-            throw new IncorrectLaunch("\"" + args[0] + "\"" + " IncorrectLaunch. " +
-                    "Example launch: \"rome\" or \"arabic\"");
-        }
 
         switch (args[0]) {
             case "arabic" -> throw new IncorrectLaunch("Not implemented yet");
@@ -38,20 +32,20 @@ public class Main {
                     String number1 = operationLine[0];
                     String operator = operationLine[1];
                     String number2 = operationLine[2];
-                    RomeCalculator romeCalculator = new RomeCalculator();
+                    Calculator<String> romeCalculator = new RomeCalculator<>();
 
                     String result;
 
                     switch (operator) {
                         case "+" -> result = romeCalculator.addition(number1, number2);
                         case "-" -> result = romeCalculator.subtraction(number1, number2);
-                        default -> throw new UnsupportedOperator("\"" + operator + "\"" +
-                                " Unsupported operator. " +
-                                "Supported operators only: \"+\" and \"-\"");
+                        default -> throw new UnsupportedOperator("\"" + operator + "\""
+                                + " Unsupported operator. " + "Supported operators only: \"+\" and \"-\"");
                     }
                     System.out.println(result);
                 }
-            }
+            } default -> throw new IncorrectLaunch("\"" + args[0] + "\"" + " IncorrectLaunch. "
+                    + "Example launch: \"rome\" or \"arabic\"");
         }
     }
 }

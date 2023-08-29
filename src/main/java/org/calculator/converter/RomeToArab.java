@@ -2,7 +2,7 @@ package org.calculator.converter;
 
 import java.util.Map;
 
-public class ToArab implements Converter {
+public final class RomeToArab<Input, Output> implements Converter<Input, Output> {
     private final Map<String, Integer> NUMBERS_MAP = Map.of(
             "I", 1,
             "II", 2,
@@ -16,7 +16,7 @@ public class ToArab implements Converter {
             "X", 10);
 
     @Override
-    public Integer convert(final Object ROMAN_NUMERAl) {
-        return NUMBERS_MAP.get(ROMAN_NUMERAl.toString());
+    public Output convert(final Input ROMAN_NUMERAl) {
+        return (Output) NUMBERS_MAP.get(ROMAN_NUMERAl.toString());
     }
 }
