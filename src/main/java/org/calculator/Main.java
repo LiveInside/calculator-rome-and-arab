@@ -1,21 +1,23 @@
 package org.calculator;
 
+import org.calculator.enums.ModCalculator;
 import org.calculator.exception.IncorrectInput;
 import org.calculator.exception.IncorrectLaunch;
 import org.calculator.exception.UnsupportedOperator;
 
 import java.util.Scanner;
-
 // Написать своё исключение, добавить exit, добавить цикл
 
 public class Main {
     public static void main(final String[] args)
             throws IncorrectLaunch, IncorrectInput, UnsupportedOperator {
 
-        switch (args[0].toLowerCase()) {
-            case "arabic" -> { //todo: Необходимо реализовать калькулятор арабских чисел ;
+        ModCalculator mod = ModCalculator.getModByInput(args[0]);
+
+        switch (mod) {
+            case ARABIC -> { //todo: Необходимо реализовать калькулятор арабских чисел ;
             }
-            case "rome" -> {
+            case ROME -> {
                 String exit;
                 System.out.print("""
                         Это калькулятор римских чисел. Он может складывать и вычитать римские числа
@@ -57,3 +59,4 @@ public class Main {
         }
     }
 }
+

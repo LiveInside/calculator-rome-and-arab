@@ -3,6 +3,7 @@ import org.calculator.RomeCalculator;
 import org.calculator.converter.Converter;
 import org.calculator.converter.RomeToArab;
 import org.calculator.converter.ArabToRome;
+import org.calculator.exception.IncorrectInput;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class CalculatorTest {
     Converter<String, Integer> arabConverter = new RomeToArab();
     Converter<Integer, String> romeConverter = new ArabToRome();
     @Test
-    public void testRomeToArab() {
+    public void testRomeToArab() throws IncorrectInput {
         int[] arabNumbers = {5, 3};
         int arabNumber1 = arabConverter.convert("V");
         int arabNumber2 = arabConverter.convert("III");
@@ -24,7 +25,7 @@ public class CalculatorTest {
                 .isEqualTo(arabNumbers[1]);
     }
     @Test
-    public void testArabToRome() {
+    public void testArabToRome() throws IncorrectInput {
         assertThat(romeConverter.convert(7))
                 .isEqualTo("VII");
     }
