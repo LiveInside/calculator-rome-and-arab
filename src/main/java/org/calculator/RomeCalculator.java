@@ -5,9 +5,7 @@ import org.calculator.converter.RomeToArab;
 import org.calculator.converter.ArabToRome;
 import org.calculator.exception.IncorrectInput;
 
-// Наследоваться только от Calculator
 public final class RomeCalculator implements Calculator<String> {
-    // Константые только поля класса капсом и через нижнее подчёркивание
 
     private final Converter<String, Integer> ROME_TO_ARAB_CONVERTER = new RomeToArab();
     private final Converter<Integer, String> ARAB_TO_ROME_CONVERTER = new ArabToRome();
