@@ -5,20 +5,20 @@ import org.calculator.exception.IncorrectInput;
 import org.calculator.exception.IncorrectLaunch;
 import org.calculator.exception.UnsupportedOperator;
 
+import java.util.Objects;
 import java.util.Scanner;
-// Написать своё исключение, добавить exit, добавить цикл
 
 public class Main {
+    private static final String EXIT = "exit";
+    private static final Calculator<String> ROME_CALCULATOR = new RomeCalculator();
     public static void main(final String[] args)
             throws IncorrectLaunch, IncorrectInput, UnsupportedOperator {
 
         ModCalculator mod = ModCalculator.getModByInput(args[0]);
-
         switch (mod) {
-            case ARABIC -> { //todo: Необходимо реализовать калькулятор арабских чисел ;
+            case ARABIC -> { //todo: Необходимо реализовать калькулятор арабских чисел;
             }
             case ROME -> {
-                String exit;
                 System.out.print("""
                         Это калькулятор римских чисел. Он может складывать и вычитать римские числа
                         Пример ввода: I + II
@@ -32,9 +32,8 @@ public class Main {
                     String[] operationLine = userInput.nextLine()
                             .toUpperCase()
                             .split(" ");
-                    exit = operationLine[0];
 
-                    if (exit.equalsIgnoreCase("exit")) {
+                    if (EXIT.equalsIgnoreCase(operationLine[0])) {
                         System.out.println("Пока!");
                         break;
                     } else if (operationLine.length != 3) {
@@ -44,14 +43,16 @@ public class Main {
                     String number1 = operationLine[0];
                     String operator = operationLine[1];
                     String number2 = operationLine[2];
-                    Calculator<String> romeCalculator = new RomeCalculator();
 
                     String result;
 
                     switch (operator) {
-                        case "+" -> result = romeCalculator.addition(number1, number2);
-                        case "-" -> result = romeCalculator.subtraction(number1, number2);
+                        case "+" -> result = ROME_CALCULATOR.addition(number1, number2);
+                        case "-" -> result = ROME_CALCULATOR.subtraction(number1, number2);
                         default -> throw new UnsupportedOperator("Supported operators only \"+\" and \"-\"");
+                    }
+                    if (Objects.isNull(result)) {
+                        throw new IncorrectInput("Не удалось произвести вычисления");
                     }
                     System.out.println("Ответ: " + result);
                 }
