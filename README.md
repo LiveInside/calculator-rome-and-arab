@@ -1,3 +1,4 @@
+<a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
 <br />
@@ -9,7 +10,7 @@
 <h3 align="center">ROME CALCULATOR</h3>
 
   <p align="center">
-    Это лучший калькулятор римских чисел !
+    Это лучший калькулятор римских чисел ! :smile:
   </p>
 </div>
 
@@ -17,14 +18,13 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Навигация</summary>
   <ol>
-    <li>
-        <a href="#about-the-project">О приложении</a>
-    <li><a href="#installation">Запуск приложения</a></li>
-    <li><a href="#usage">Использование</a></li>
-    <li><a href="#roadmap">Дорожная карта</a></li>
-    <li><a href="#contact">Контакты</a></li>
+    <li><a href="#о-приложении">О приложении</a></li>
+    <li><a href="#запуск-приложения">Запуск приложения</a></li>
+    <li><a href="#использование">Использование</a></li>
+    <li><a href="#дорожная-карта">Дорожная карта</a></li>
+    <li><a href="#контакты">Контакты</a></li>
   </ol>
 </details>
 
