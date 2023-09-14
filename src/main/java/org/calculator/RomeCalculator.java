@@ -1,8 +1,8 @@
 package org.calculator;
 
+import org.calculator.converter.ArabToRome;
 import org.calculator.converter.Converter;
 import org.calculator.converter.RomeToArab;
-import org.calculator.converter.ArabToRome;
 import org.calculator.exception.IncorrectInput;
 
 public final class RomeCalculator implements Calculator<String> {

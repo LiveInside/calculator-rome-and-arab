@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Main {
     private static final String EXIT = "exit";
     private static final Calculator<String> ROME_CALCULATOR = new RomeCalculator();
+
     public static void main(final String[] args)
             throws IncorrectLaunch, IncorrectInput, UnsupportedOperator {
 
@@ -56,7 +57,8 @@ public class Main {
                     }
                     System.out.println("Ответ: " + result);
                 }
-            } default -> throw new IncorrectLaunch("Example launch \"rome\" or \"arabic\"");
+            }
+            default -> throw new IncorrectLaunch("Example launch \"rome\" or \"arabic\"");
         }
     }
 }
