@@ -3,12 +3,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/LiveInside/calculator-rome-and-arab/tree/master">
     <img src="images/logo.jpg" alt="Logo" width="107" height="100">
   </a>
 
 <h3 align="center">ROME CALCULATOR</h3>
-
   <p align="center">
     Это лучший калькулятор римских чисел ! :smile:
   </p>
