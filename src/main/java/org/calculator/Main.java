@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
-    private static final String EXIT = "exit";
     private static final Calculator<String> ROME_CALCULATOR = new RomeCalculator();
 
     public static void main(final String[] args)
@@ -34,12 +33,7 @@ public class Main {
                             .toUpperCase()
                             .split(" ");
 
-                    if (EXIT.equalsIgnoreCase(operationLine[0])) {
-                        System.out.println("Пока!");
-                        break;
-                    } else if (operationLine.length != 3) {
-                        throw new IncorrectInput("Example Input \"I + II\"");
-                    }
+                    if (isBreak(operationLine)) break;
 
                     String number1 = operationLine[0];
                     String operator = operationLine[1];
@@ -61,5 +55,17 @@ public class Main {
             default -> throw new IncorrectLaunch("Example launch \"rome\" or \"arabic\"");
         }
     }
+
+    private static boolean isBreak(String[] operationLine) throws IncorrectInput {
+        String EXIT = "exit";
+        if (EXIT.equalsIgnoreCase(operationLine[0])) {
+            System.out.println("Пока!");
+            return true;
+        } else if (operationLine.length != 3) {
+            throw new IncorrectInput("Example Input \"I + II\"");
+        }
+        return false;
+    }
+
 }
 
